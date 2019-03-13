@@ -313,8 +313,10 @@ function Install-ServiceFabricSdk
     $wpiExe = Get-WebPlatformInstaller
     $productId = Get-ServiceFabricSdkProductId -VSVersionNumber $VSVersionNumber
     
-    Invoke-Process -FileName "$wpiExe" -Arguments "/Offline /Products:$productId /Path:$($env:Temp)\OfflineCache"
-    Invoke-Process -FileName "$wpiExe" -Arguments "/Install /Products:$productId /AcceptEula /SuppressReboot /SuppressPostFinish /Log:$LogPath /xml:$($env:Temp)\OfflineCache\feeds\latest\webproductlist.xml"
+    #Invoke-Process -FileName "$wpiExe" -Arguments "/Offline /Products:$productId /Path:$($env:Temp)\OfflineCache"
+    #Invoke-Process -FileName "$wpiExe" -Arguments "/Install /Products:$productId /AcceptEula /SuppressReboot /SuppressPostFinish /Log:$LogPath /xml:$($env:Temp)\OfflineCache\feeds\latest\webproductlist.xml"
+
+	Invoke-Process -FileName "$wpiExe" -Arguments "/Install /Products:$productId /AcceptEula /SuppressReboot /Log:$LogPath"
 }
 
 function Enable-ServiceFabricTools
