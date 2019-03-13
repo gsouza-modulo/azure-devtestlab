@@ -397,7 +397,7 @@ try
     if ($vsVersionNumber -ge 15)
     {
         Write-Host 'Enabling Service Fabric Tools.'
-        Enable-ServiceFabricTools -VSVersionNumber $vsVersionNumber
+        #Enable-ServiceFabricTools -VSVersionNumber $vsVersionNumber
     }
 
     Write-Host "`nThe artifact was applied successfully.`n"
