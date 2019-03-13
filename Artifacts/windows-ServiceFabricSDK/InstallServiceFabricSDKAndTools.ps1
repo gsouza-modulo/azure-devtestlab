@@ -376,7 +376,11 @@ try
     Write-Host "Starting installation of Service Fabric SDK and Tools for $VSVersion."
 
     # For this process, we want to be able to execute downloaded scripts.
-    Set-ExecutionPolicy Bypass -Scope CurrentUser -Force | Out-Null
+    Set-ExecutionPolicy Bypass -Scope Process -Force | Out-Null
+
+	# Required by Service Fabric installation
+
+	Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force | Out-Null
 
     # Change the "Local AppData" path to a location where the process can write, or the relevant
     # VS installer components will fail to complete.
@@ -405,6 +409,6 @@ try
 finally
 {
     # Restore system to state prior to execution of this script.
-    reg add "hku\.default\software\microsoft\windows\currentversion\explorer\user shell folders" /v "Local AppData" /t REG_EXPAND_SZ /d %%USERPROFILE%%\AppData\Local /f | Out-Null
+	reg add "hku\.default\software\microsoft\windows\currentversion\explorer\user shell folders" /v "Local AppData" /t REG_EXPAND_SZ /d %%USERPROFILE%%\AppData\Local /f | Out-Null
     Pop-Location
 }
