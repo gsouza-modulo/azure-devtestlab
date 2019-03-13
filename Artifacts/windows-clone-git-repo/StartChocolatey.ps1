@@ -171,7 +171,7 @@ function Invoke-GitEnlister
     $oldPolicyValue = Set-LocalAccountTokenFilterPolicy
     try
     {
-        Invoke-Command -ComputerName $env:COMPUTERNAME -Credential $credential -FilePath $command -ArgumentList $ArgumentList
+        Invoke-Command -Credential $credential -FilePath $command -ArgumentList $ArgumentList
     }
     finally
     {
