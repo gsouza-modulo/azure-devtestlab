@@ -376,9 +376,8 @@ try
     Write-Host "Starting installation of Service Fabric SDK and Tools for $VSVersion."
 
     # For this process, we want to be able to execute downloaded scripts.
-    #Set-ExecutionPolicy Bypass -Scope Process -Force | Out-Null
-
-	Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope CurrentUser -Force | Out-Null
+    
+	Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force | Out-Null
 
     # Change the "Local AppData" path to a location where the process can write, or the relevant
     # VS installer components will fail to complete.
